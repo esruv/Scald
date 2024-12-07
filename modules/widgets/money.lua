@@ -17,18 +17,18 @@ function addon:PLAYER_LOGIN()
 		return
 	end
 
-	if not _G.InomenaMoney then
-		_G.InomenaMoney = {}
+	if not _G.ScaldMoney then
+		_G.ScaldMoney = {}
 	end
 
 	local realm = GetRealmID()
-	if not _G.InomenaMoney[realm] then
-		_G.InomenaMoney[realm] = {}
+	if not _G.ScaldMoney[realm] then
+		_G.ScaldMoney[realm] = {}
 	end
 
 	local character = UnitName('player') .. ':' .. (UnitClassBase('player'))
-	if not _G.InomenaMoney[realm][character] then
-		_G.InomenaMoney[realm][character] = GetMoney()
+	if not _G.ScaldMoney[realm][character] then
+		_G.ScaldMoney[realm][character] = GetMoney()
 	end
 end
 
@@ -38,7 +38,7 @@ function addon:PLAYER_MONEY()
 	end
 
 	local character = UnitName('player') .. ':' .. (UnitClassBase('player'))
-	_G.InomenaMoney[GetRealmID()][character] = GetMoney()
+	_G.ScaldMoney[GetRealmID()][character] = GetMoney()
 end
 
 -- I'd go nuts if this data wasn't sorted
@@ -85,7 +85,7 @@ tooltip:SetScript('OnEnter', function(self)
 
 	local total = 0
 	local currentRealm = GetRealmID()
-	for realmID, characters in next, _G.InomenaMoney do
+	for realmID, characters in next, _G.ScaldMoney do
 		for character, money in orderedPairs(characters) do
 			if money > 1000000 then -- ignore characters with less than 100 gold, they're probably deleted
 				local name, class = string.split(':', character)

@@ -1,8 +1,8 @@
 ## Interface: 110005
-## Author: p3lim
-## Title: Inomena
+## Author: esruv
+## Title: Scald
 ## Notes: Personal UI
-## SavedVariables: InomenaMoney, InomenaPlayed
+## SavedVariables: ScaldMoney, ScaldPlayed
 
 ../Dashi/embed.xml
 

@@ -9,7 +9,7 @@ local CVARS = {
 	interactOnLeftClick = 0,
 	lootUnderMouse = 0,
 	autoLootDefault = 1,
-	combinedBags = 0,
+	combinedBags = 1,
 	empowerTapControls = 1, -- this was moved somewhere else
 	softTargettingInteractKeySound = 0,
 	ClipCursor = 0,
@@ -58,9 +58,9 @@ local CVARS = {
 	showTutorials = 0,
 	Outline = 1,
 	statusText = 1,
-	statusTextDisplay = 'BOTH',
+	statusTextDisplay = "BOTH",
 	chatBubbles = 1,
-	chatBubblesParty = 0,
+	chatBubblesParty = 1,
 
 	-- Action Bars
 	lockActionBars = 1,
@@ -72,7 +72,7 @@ local CVARS = {
 	doNotFlashLowHealthWarning = 1,
 	lossOfControl = 1,
 	enableFloatingCombatText = 0,
-	enableMouseoverCast = 0,
+	enableMouseoverCast = 1,
 	autoSelfCast = 1,
 	-- no cvar for self cast key? we want it set to "None"
 	-- no cvar for focus cast key? we want it set to "None"
@@ -96,9 +96,9 @@ local CVARS = {
 	showToastFriendRequest = 0,
 	showToastWindow = 0,
 	autoAcceptQuickJoinRequests = 0,
-	chatStyle = 'classic',
-	whisperMode = 'inline',
-	showTimestamps = 'none',
+	chatStyle = "classic",
+	whisperMode = "inline",
+	showTimestamps = "none",
 	enableTwitter = 0,
 
 	-- Ping System
@@ -160,7 +160,7 @@ local UVARS = {
 	-- autoQuestWatch = 1, -- unused
 	-- mapFade = 1,
 	-- removeChatDelay = 1, -- unused
-	screenshotFormat = 'png',
+	screenshotFormat = "png",
 	screenshotQuality = 10,
 	scriptErrors = 1,
 	taintLog = IsTestBuild() and 11 or 2,
@@ -190,9 +190,9 @@ function addon:PLAYER_LOGIN()
 		C_CVar.SetCVar(key, value)
 	end
 
-	if UnitLevel('player') < GetMaxLevelForPlayerExpansion() then
+	if UnitLevel("player") < GetMaxLevelForPlayerExpansion() then
 		-- this is nice while leveling
-		C_CVar.SetCVar('AutoPushSpellToActionBar', 1)
+		C_CVar.SetCVar("AutoPushSpellToActionBar", 1)
 	end
 
 	return true
@@ -200,19 +200,19 @@ end
 
 local lastDialogSetting
 local function cinematicStart()
-	lastDialogSetting = C_CVar.GetCVar('Sound_EnableDialog')
-	C_CVar.SetCVar('Sound_EnableDialog', '1')
+	lastDialogSetting = C_CVar.GetCVar("Sound_EnableDialog")
+	C_CVar.SetCVar("Sound_EnableDialog", "1")
 
 	return true -- we have to stop it because it tends to trigger more than once
 end
 
 function addon:CINEMATIC_STOP()
 	if lastDialogSetting then
-		C_CVar.SetCVar('Sound_EnableDialog', lastDialogSetting)
+		C_CVar.SetCVar("Sound_EnableDialog", lastDialogSetting)
 		lastDialogSetting = nil
 
-		addon:RegisterEvent('CINEMATIC_START', cinematicStart)
+		addon:RegisterEvent("CINEMATIC_START", cinematicStart)
 	end
 end
 
-addon:RegisterEvent('CINEMATIC_START', cinematicStart)
+addon:RegisterEvent("CINEMATIC_START", cinematicStart)

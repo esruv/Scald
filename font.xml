@@ -1,10 +1,10 @@
 <Ui xmlns='http://www.blizzard.com/wow/ui/'>
-	<FontFamily name='InomenaFont' virtual='true'>
+	<FontFamily name='ScaldFont' virtual='true'>
 		<Member alphabet='roman'>
-			<Font font='Interface\AddOns\Inomena\assets\fonts\semplice.ttf' height='8' outline='NORMAL' monochrome='true'/>
+			<Font font='Interface\AddOns\Scald\assets\fonts\semplice.ttf' height='8' outline='NORMAL' monochrome='true'/>
 		</Member>
 		<Member alphabet='russian'>
-			<Font font='Interface\AddOns\Inomena\assets\fonts\homespun.ttf' height='10' outline='NORMAL' monochrome='true'/>
+			<Font font='Interface\AddOns\Scald\assets\fonts\homespun.ttf' height='10' outline='NORMAL' monochrome='true'/>
 		</Member>
 		<!-- no fonts for the following alphabets, please do suggest! -->
 		<Member alphabet='korean'>
@@ -17,7 +17,7 @@
 			<Font font='Fonts\blei00d.ttf' height='10' outline='NORMAL' monochrome='true'/>
 		</Member>
 	</FontFamily>
-	<Font name='InomenaFontNormal' inherits='InomenaFont' virtual='true'>
+	<Font name='ScaldFontNormal' inherits='ScaldFont' virtual='true'>
 		<Shadow>
 			<Offset x='0' y='0'/>
 		</Shadow>

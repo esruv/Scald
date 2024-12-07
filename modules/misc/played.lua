@@ -18,17 +18,17 @@ end
 
 local sessionStart, playerRealm, playerName
 function addon:TIME_PLAYED_MSG(total)
-	if not _G.InomenaPlayed then
-		_G.InomenaPlayed = {}
+	if not _G.ScaldPlayed then
+		_G.ScaldPlayed = {}
 	end
 
 	playerRealm = GetRealmID()
-	if not _G.InomenaPlayed[playerRealm] then
-		_G.InomenaPlayed[playerRealm] = {}
+	if not _G.ScaldPlayed[playerRealm] then
+		_G.ScaldPlayed[playerRealm] = {}
 	end
 
 	playerName = UnitName('player') .. ':' .. (UnitClassBase('player'))
-	_G.InomenaPlayed[playerRealm][playerName] = total
+	_G.ScaldPlayed[playerRealm][playerName] = total
 
 	if registered then
 		sessionStart = GetTime()
@@ -49,7 +49,7 @@ end
 
 hooksecurefunc('ChatFrame_DisplayTimePlayed', function(self)
 	local total = 0
-	for _, characters in next, _G.InomenaPlayed do
+	for _, characters in next, _G.ScaldPlayed do
 		for _, seconds in next, characters do
 			total = total + seconds
 		end
@@ -63,5 +63,5 @@ hooksecurefunc('ChatFrame_DisplayTimePlayed', function(self)
 end)
 
 function addon:PLAYER_LOGOUT()
-	_G.InomenaPlayed[playerRealm][playerName] = _G.InomenaPlayed[playerRealm][playerName] + (sessionStart - GetTime())
+	_G.ScaldPlayed[playerRealm][playerName] = _G.ScaldPlayed[playerRealm][playerName] + (sessionStart - GetTime())
 end
